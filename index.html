@@ -1,208 +1,672 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <!-- PINTEREST VERIFICATION -->
-    <meta name="p:domain_verify" content="1446a49cf2d34e3b498f95a132f2d4d6"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kindred Archive | Archival Specimen Studio</title>
-    <style>
-        :root { --bg: #ffffff; --text: #1a1a1a; --accent: #666666; --border: #eeeeee; }
-        
-        /* FLEXBOX CORE - Tvingar allt till mitten */
-        body { 
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
-            line-height: 1.6; 
-            color: var(--text); 
-            max-width: 900px; 
-            margin: 0 auto; 
-            padding: 60px 20px; 
-            background: var(--bg); 
-            display: flex;
-            flex-direction: column;
-            align-items: center; /* Horisontell centrering av alla barn */
-            text-align: center; 
-        }
-        
-        header { 
-            width: 100%; 
-            border-bottom: 1px solid var(--border); 
-            padding-bottom: 30px; 
-            margin-bottom: 50px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center; /* FIX: tvinga centrerad text i header */
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kindred Archive | Autonomous Printable Wall Art Studio</title>
+  <meta
+    name="description"
+    content="Kindred Archive is an autonomous digital studio creating curated printable wall art with a focus on calm texture, clarity, and timeless interior presentation."
+  />
+  <meta name="theme-color" content="#f5f1ea" />
+  <style>
+    :root {
+      --bg: #f7f4ee;
+      --paper: #fcfaf6;
+      --ink: #1f1b17;
+      --muted: #6e655d;
+      --line: #ddd4ca;
+      --accent: #bca58d;
+      --accent-dark: #9f8369;
+      --max: 1120px;
+      --radius: 18px;
+      --shadow: 0 10px 30px rgba(31, 27, 23, 0.06);
+    }
 
-        h1 { 
-            font-weight: 300; 
-            letter-spacing: 6px; 
-            font-size: 2.2em; 
-            margin: 0; 
-            text-transform: uppercase;
-            width: 100%;
-            text-align: center; /* säkerhetsbälte */
-        }
+    * {
+      box-sizing: border-box;
+    }
 
-        .tagline { 
-            color: var(--accent); 
-            font-size: 0.85em; 
-            letter-spacing: 2px; 
-            margin: 15px auto 0 auto;  /* FIX: centrerad som block */
-            text-transform: uppercase;
-            display: block;
-            text-align: center;        /* FIX: centrerad text */
-            width: fit-content;        /* FIX: beter sig som subtitle under titeln */
-            max-width: 100%;
-        }
-        
-        section { 
-            width: 100%; 
-            margin-bottom: 80px; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    html {
+      scroll-behavior: smooth;
+    }
 
-        h2 { 
-            font-weight: 400; 
-            font-size: 1.1em; 
-            margin-bottom: 25px; 
-            text-transform: uppercase; 
-            letter-spacing: 2px; 
-            border-bottom: 1px solid var(--text); 
-            padding-bottom: 5px; 
-        }
-        
-        p { 
-            font-size: 1.05em; 
-            color: #333; 
-            max-width: 650px; 
-            margin: 0 auto 20px auto; 
-            width: 100%;
-            display: block;
-            text-align: center; /* generellt centrerat (matchar din layout) */
-        }
+    body {
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.6;
+    }
 
-        .gallery { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 30px; 
-            margin: 40px 0; 
-            width: 100%;
-        }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-        .specimen { 
-            background: #fff; 
-            padding: 15px; 
-            border: 1px solid var(--border); 
-            transition: transform 0.3s ease; 
-        }
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
-        .specimen:hover { transform: translateY(-5px); }
-        .specimen img { width: 100%; height: auto; display: block; filter: grayscale(20%); }
-        .specimen-label { font-size: 0.75em; color: var(--accent); margin-top: 10px; font-family: monospace; }
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
 
-        .cta-block { 
-            background: #f9f9f9; 
-            padding: 50px 20px; 
-            border: 1px solid var(--border); 
-            margin-top: 40px; 
-            width: 100%;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center; /* FIX: centrerar rubrik + text + knapp */
-        }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      background: rgba(247, 244, 238, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(221, 212, 202, 0.8);
+    }
 
-        .cta-block p {
-            margin: 0 auto 25px auto; /* FIX: centrerad + spacing */
-            text-align: center;       /* FIX: säkerhetsbälte */
-        }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      gap: 20px;
+    }
 
-        .btn { 
-            display: inline-block; 
-            padding: 18px 40px; 
-            background: var(--text); 
-            color: #fff; 
-            text-decoration: none; 
-            letter-spacing: 3px; 
-            font-size: 0.85em; 
-            text-transform: uppercase; 
-            transition: background 0.3s; 
-        }
+    .brand {
+      font-size: 1.05rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
 
-        .btn:hover { background: #444; }
+    .nav {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
 
-        footer { 
-            width: 100%;
-            margin-top: 100px; 
-            font-size: 0.75em; 
-            color: var(--accent); 
-            border-top: 1px solid var(--border); 
-            padding-top: 40px; 
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-        }
+    .nav a {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
 
-        .footer-links {
-            margin-top: 15px;
-        }
+    .nav a:hover {
+      color: var(--ink);
+    }
 
-        footer a { 
-            color: var(--text); 
-            text-decoration: none; 
-            margin: 0 15px; 
-            text-transform: uppercase; 
-            letter-spacing: 1px;
-        }
+    .hero {
+      padding: 84px 0 56px;
+    }
 
-        footer a:hover { text-decoration: underline; }
-    </style>
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 32px;
+      align-items: stretch;
+    }
+
+    .hero-copy,
+    .hero-card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 42px;
+    }
+
+    .eyebrow {
+      margin: 0 0 18px;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.78rem;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.15;
+      margin: 0;
+      font-weight: 500;
+    }
+
+    h1 {
+      font-size: clamp(2.3rem, 5vw, 4.3rem);
+      letter-spacing: 0.01em;
+    }
+
+    .hero-copy p.lead {
+      font-size: 1.15rem;
+      color: var(--ink);
+      margin: 22px 0 0;
+      max-width: 60ch;
+    }
+
+    .hero-copy p.sub {
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1rem;
+      color: var(--muted);
+      margin: 18px 0 0;
+      max-width: 62ch;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.95rem;
+      transition: 0.2s ease;
+    }
+
+    .btn.primary {
+      background: var(--ink);
+      color: #fff;
+      border-color: var(--ink);
+    }
+
+    .btn.primary:hover {
+      background: #000;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--ink);
+      border-color: var(--line);
+    }
+
+    .btn.secondary:hover {
+      border-color: var(--ink);
+      background: #f3ede5;
+    }
+
+    .hero-card {
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .stat {
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .stat:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .stat-label {
+      display: block;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+
+    .stat-value {
+      font-size: 1.15rem;
+      color: var(--ink);
+    }
+
+    .section {
+      padding: 26px 0 74px;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 30px;
+    }
+
+    .section-head p {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--muted);
+      margin-top: 12px;
+      font-size: 1rem;
+    }
+
+    .grid-3,
+    .grid-2 {
+      display: grid;
+      gap: 22px;
+    }
+
+    .grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 26px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+    }
+
+    .card p,
+    .card li {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .card ul {
+      margin: 12px 0 0;
+      padding-left: 18px;
+    }
+
+    .trust-list {
+      display: grid;
+      gap: 16px;
+    }
+
+    .trust-item {
+      padding: 18px 20px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    .trust-item strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1.02rem;
+    }
+
+    .trust-item span {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .links-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .link-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.95rem;
+      box-shadow: var(--shadow);
+    }
+
+    .link-chip:hover {
+      border-color: var(--accent-dark);
+      background: #f5eee7;
+    }
+
+    .cta-panel {
+      background: linear-gradient(180deg, #f9f5ee 0%, #f4ede4 100%);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 38px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .cta-panel p {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--muted);
+      max-width: 700px;
+      margin: 14px auto 0;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0 38px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .footer-left {
+      font-size: 0.95rem;
+      color: var(--muted);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 0.92rem;
+      color: var(--muted);
+    }
+
+    .footer-links a:hover {
+      color: var(--ink);
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .grid-3,
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 56px;
+      }
+
+      .hero-copy,
+      .hero-card,
+      .card,
+      .cta-panel {
+        padding: 24px;
+      }
+
+      .topbar-inner {
+        min-height: auto;
+        padding: 14px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Kindred Archive</h1>
-        <p class="tagline">Sovereign Curation of Archival Visual Specimens</p>
-    </header>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="#top" class="brand">Kindred Archive</a>
+      <nav class="nav">
+        <a href="#about">About</a>
+        <a href="#system">System</a>
+        <a href="#trust">Why trust it</a>
+        <a href="#links">Links</a>
+      </nav>
+    </div>
+  </header>
 
-    <section>
-        <h2>The Studio</h2>
-        <p>Kindred Archive is an autonomous design unit dedicated to the exploration of tectonic stillness and mineral density. We curate high-fidelity archival specimens designed to serve as atmospheric anchors in modern interior spaces.</p>
-        <p>Our process integrates neural workflows with rigorous archival standards, ensuring each artifact possesses a unique provenance and a profound sensory presence.</p>
-    </section>
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Autonomous printable wall art studio</p>
+          <h1>Curated printable wall art, built through a fully autonomous studio system.</h1>
+          <p class="lead">
+            Kindred Archive is a digital studio creating calm, textured printable wall art for modern interiors.
+          </p>
+          <p class="sub">
+            Behind the storefront is an autonomous production and distribution system handling curation,
+            packaging, listing workflows and visual distribution. The result is a studio built for clarity,
+            consistency and long-term brand trust.
+          </p>
 
-    <section>
-        <h2>Specimen Archive</h2>
-        <div class="gallery">
-            <div class="specimen">
-                <img src="https://pub-792dd77fa8df404abf1c7e2730fd9ac0.r2.dev/kindred-templates/how_it_works_card_v1..png" alt="Archival Specimen 01">
-                <div class="specimen-label">RECORD_ID: KA-ALPHA-01 // 300 DPI</div>
-            </div>
-            <div class="specimen">
-                <img src="https://pub-792dd77fa8df404abf1c7e2730fd9ac0.r2.dev/kindred-templates/size_print_guide_v1.png" alt="Archival Specimen 02">
-                <div class="specimen-label">RECORD_ID: KA-BETA-02 // 300 DPI</div>
-            </div>
+          <div class="cta-row">
+            <a
+              class="btn primary"
+              href="https://www.etsy.com/shop/kindredarchive"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit Etsy Shop
+            </a>
+            <a
+              class="btn secondary"
+              href="https://se.pinterest.com/KindredArchive/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Pinterest
+            </a>
+          </div>
         </div>
+
+        <aside class="hero-card">
+          <div class="stat">
+            <span class="stat-label">Studio model</span>
+            <div class="stat-value">Autonomous digital art production and distribution</div>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Focus</span>
+            <div class="stat-value">Textured abstract printable wall art with calm, premium presentation</div>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Output</span>
+            <div class="stat-value">Curated Etsy-ready products with structured packaging and visual consistency</div>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Channels</span>
+            <div class="stat-value">Etsy · Pinterest · External documentation</div>
+          </div>
+        </aside>
+      </div>
     </section>
 
-    <section class="cta-block">
-        <h3>Acquire a Specimen</h3>
-        <p>Visit our official storefront to view the full archival collection and acquire high-resolution masters.</p>
-        <a href="https://www.etsy.com/shop/kindredarchive" class="btn">Enter the Archive</a>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 KINDRED ARCHIVE | SENSORY RESTORATION UNIT</p>
-        <div class="footer-links">
-            <a href="privacy.html">Privacy Policy</a>
-            <a href="tos.html">Terms of Service</a>
-            <a href="https://www.etsy.com/shop/kindredarchive">Etsy Shop</a>
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">About</p>
+          <h2>What Kindred Archive is</h2>
+          <p>
+            Kindred Archive is not a general art shop and not a random AI gallery.
+            It is a focused digital studio built around one clear goal:
+            to create printable wall art that feels calm, tactile, refined and easy to trust.
+          </p>
         </div>
-    </footer>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Clear positioning</h3>
+            <p>
+              The studio focuses on textured abstract wall art designed for buyers who want soft,
+              premium visuals rather than noisy trend-driven decor.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Curated output</h3>
+            <p>
+              The work is intentionally selective. The goal is not volume for its own sake,
+              but consistency, presentation quality and visual coherence.
+            </p>
+          </div>
+
+          <div class="card">
+            <h3>Built for modern digital commerce</h3>
+            <p>
+              Every piece is prepared to function as a clear, attractive and easy-to-understand
+              digital product within a modern e-commerce environment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="system">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">System</p>
+          <h2>How the autonomous studio works</h2>
+          <p>
+            Kindred Archive runs on a fully autonomous studio workflow. That means the system is designed
+            to handle the full chain from visual direction to product packaging and distribution support.
+          </p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card">
+            <h3>What the system does</h3>
+            <ul>
+              <li>Creates and refines visual outputs within a defined aesthetic lane</li>
+              <li>Packages printable art into structured product formats</li>
+              <li>Prepares listings and visual assets for Etsy</li>
+              <li>Supports distribution through Pinterest and linked documentation</li>
+              <li>Maintains consistency through fixed quality and presentation rules</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h3>Why this matters</h3>
+            <ul>
+              <li>Consistency builds trust faster than random creativity</li>
+              <li>Clear product packaging reduces friction for buyers</li>
+              <li>Structured workflows make the brand easier to understand</li>
+              <li>Autonomy creates repeatability without losing direction</li>
+              <li>Simple systems scale better than messy ones</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="trust">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Why trust it</p>
+          <h2>Authority comes from clarity, not complexity</h2>
+          <p>
+            This page is intentionally simple. The goal is to make the studio easy to understand
+            and easy to verify.
+          </p>
+        </div>
+
+        <div class="trust-list">
+          <div class="trust-item">
+            <strong>Focused niche</strong>
+            <span>The studio is centered on printable textured abstract wall art, not broad visual output.</span>
+          </div>
+
+          <div class="trust-item">
+            <strong>Visible storefront</strong>
+            <span>The Etsy shop acts as the public commercial layer where buyers can view the collection directly.</span>
+          </div>
+
+          <div class="trust-item">
+            <strong>Public visual archive</strong>
+            <span>Pinterest functions as an external visual channel that supports discovery and aesthetic consistency.</span>
+          </div>
+
+          <div class="trust-item">
+            <strong>Open documentation</strong>
+            <span>The print size and download guide gives buyers practical clarity instead of vague promises.</span>
+          </div>
+
+          <div class="trust-item">
+            <strong>Simple brand language</strong>
+            <span>The studio is presented in plain terms so visitors understand what it is, what it sells and how it operates.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="links">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Links</p>
+          <h2>Explore the public layers of the studio</h2>
+          <p>
+            Use the links below to view the commercial storefront, visual archive and buyer-facing documentation.
+          </p>
+        </div>
+
+        <div class="links-row">
+          <a
+            class="link-chip"
+            href="https://www.etsy.com/shop/kindredarchive"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Etsy Shop
+          </a>
+
+          <a
+            class="link-chip"
+            href="https://se.pinterest.com/KindredArchive/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Pinterest
+          </a>
+
+          <a
+            class="link-chip"
+            href="https://abrasive-mice-ae0.notion.site/Download-Guide-Print-Size-Info-305650301e528035898ade7c6d4323ec"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Print & Download Guide
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-panel">
+          <p class="eyebrow">Next step</p>
+          <h2>View the collection</h2>
+          <p>
+            The best way to understand Kindred Archive is to visit the storefront and see how the work is presented in its final commercial form.
+          </p>
+          <div class="cta-row" style="justify-content:center;">
+            <a
+              class="btn primary"
+              href="https://www.etsy.com/shop/kindredarchive"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Go to Etsy
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-left">
+        © 2026 Kindred Archive · Autonomous Printable Wall Art Studio
+      </div>
+
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="tos.html">Terms of Service</a>
+        <a href="https://www.etsy.com/shop/kindredarchive" target="_blank" rel="noopener noreferrer">Etsy Shop</a>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
