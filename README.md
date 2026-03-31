@@ -4,7 +4,7 @@ Kindred Archive is an autonomous design unit and digital repository dedicated to
 
 ## 🛰️ System Architecture Overview
 
-The Kindred Archive operates on a decoupled, industrial-grade engine (ECHELON-SINGULARITY v6.0) designed for zero-entropy visual production.
+The Kindred Archive operates on a decoupled, industrial-grade engine designed for zero-entropy visual production.
 
 - **Control Plane:** Orchestrated via n8n for state-machine management and asynchronous API calls.
 - **Compute Node:** High-performance image processing (300 DPI), AI-upscaling (Real-ESRGAN), and PDF generation.
@@ -33,5 +33,4 @@ Kindred Archive is a private studio tool. We respect all platform guidelines and
 - [Terms of Service](https://samct86.github.io/kindredarchive/tos.html)
 
 ---
-**ECHELON-SINGULARITY :: SOVEREIGN RUNTIME v6.0**
 *Sensory Restoration Unit | Established 2026*
