@@ -17,6 +17,8 @@ It explains:
 
 ## Public links
 
+- GitHub repository: https://github.com/SamCT86/kindredarchive
+- Live website: https://sarmadtawfeek.se
 - Etsy Shop: https://www.etsy.com/shop/kindredarchive
 - Pinterest: https://se.pinterest.com/KindredArchive/
 - Print & Download Guide: https://abrasive-mice-ae0.notion.site/Download-Guide-Print-Size-Info-305650301e528035898ade7c6d4323ec
