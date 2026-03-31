@@ -17,7 +17,7 @@ It explains:
 
 ## Public links
 
-- Live website: https://github.com/SamCT86/kindredarchive/
+- Live website: https://samct86.github.io/kindredarchive/
 - Personal website: https://sarmadtawfeek.se
 - Etsy Shop: https://www.etsy.com/shop/kindredarchive
 - Pinterest: https://se.pinterest.com/KindredArchive/
