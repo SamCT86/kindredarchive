@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="p:domain_verify" content="1446a49cf2d34e3b498f95a132f2d4d6"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kindred Archive | Autonomous Printable Wall Art Studio</title>
   <meta
@@ -9,6 +10,7 @@
     content="Kindred Archive is an autonomous digital studio creating curated printable wall art with a focus on calm texture, clarity, and timeless interior presentation."
   />
   <meta name="theme-color" content="#f5f1ea" />
+
   <style>
     :root {
       --bg: #f7f4ee;
@@ -16,10 +18,12 @@
       --ink: #1f1b17;
       --muted: #6e655d;
       --line: #ddd4ca;
+      --line-soft: #e8dfd5;
       --accent: #bca58d;
       --accent-dark: #9f8369;
       --max: 1120px;
       --radius: 18px;
+      --radius-lg: 28px;
       --shadow: 0 10px 30px rgba(31, 27, 23, 0.06);
     }
 
@@ -57,7 +61,7 @@
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 20;
+      z-index: 30;
       background: rgba(247, 244, 238, 0.92);
       backdrop-filter: blur(10px);
       border-bottom: 1px solid rgba(221, 212, 202, 0.8);
@@ -67,20 +71,21 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      min-height: 72px;
+      min-height: 78px;
       gap: 20px;
     }
 
     .brand {
-      font-size: 1.05rem;
-      letter-spacing: 0.18em;
+      font-size: 1.02rem;
+      letter-spacing: 0.20em;
       text-transform: uppercase;
       font-weight: 500;
+      white-space: nowrap;
     }
 
     .nav {
       display: flex;
-      gap: 22px;
+      gap: 24px;
       flex-wrap: wrap;
     }
 
@@ -88,6 +93,7 @@
       font-family: Arial, Helvetica, sans-serif;
       font-size: 0.92rem;
       color: var(--muted);
+      transition: color 0.2s ease;
     }
 
     .nav a:hover {
@@ -95,26 +101,26 @@
     }
 
     .hero {
-      padding: 84px 0 56px;
+      padding: 56px 0 38px;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 32px;
-      align-items: stretch;
+    .hero-wrap {
+      max-width: 920px;
+      margin: 0 auto;
     }
 
-    .hero-copy,
-    .hero-card {
+    .hero-panel {
       background: var(--paper);
       border: 1px solid var(--line);
-      border-radius: 24px;
+      border-radius: var(--radius-lg);
       box-shadow: var(--shadow);
+      padding: 52px 46px 34px;
     }
 
     .hero-copy {
-      padding: 42px;
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
     }
 
     .eyebrow {
@@ -133,29 +139,32 @@
     }
 
     h1 {
-      font-size: clamp(2.3rem, 5vw, 4.3rem);
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
       letter-spacing: 0.01em;
+      max-width: 12ch;
+      margin: 0 auto;
     }
 
     .hero-copy p.lead {
-      font-size: 1.15rem;
+      font-size: 1.08rem;
       color: var(--ink);
-      margin: 22px 0 0;
-      max-width: 60ch;
+      margin: 20px auto 0;
+      max-width: 56ch;
     }
 
     .hero-copy p.sub {
       font-family: Arial, Helvetica, sans-serif;
       font-size: 1rem;
       color: var(--muted);
-      margin: 18px 0 0;
-      max-width: 62ch;
+      margin: 16px auto 0;
+      max-width: 66ch;
     }
 
     .cta-row {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
+      justify-content: center;
       margin-top: 28px;
     }
 
@@ -170,6 +179,7 @@
       font-family: Arial, Helvetica, sans-serif;
       font-size: 0.95rem;
       transition: 0.2s ease;
+      white-space: nowrap;
     }
 
     .btn.primary {
@@ -180,6 +190,7 @@
 
     .btn.primary:hover {
       background: #000;
+      border-color: #000;
     }
 
     .btn.secondary {
@@ -193,40 +204,39 @@
       background: #f3ede5;
     }
 
-    .hero-card {
-      padding: 30px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 34px;
     }
 
-    .stat {
-      padding: 16px 0;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .stat:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
+    .stat-card {
+      background: #f8f3ec;
+      border: 1px solid var(--line-soft);
+      border-radius: 18px;
+      padding: 18px;
+      text-align: left;
     }
 
     .stat-label {
       display: block;
       font-family: Arial, Helvetica, sans-serif;
-      font-size: 0.78rem;
+      font-size: 0.74rem;
       text-transform: uppercase;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.14em;
       color: var(--muted);
       margin-bottom: 8px;
     }
 
     .stat-value {
-      font-size: 1.15rem;
+      font-size: 1rem;
       color: var(--ink);
+      line-height: 1.45;
     }
 
     .section {
-      padding: 26px 0 74px;
+      padding: 28px 0 74px;
     }
 
     .section-head {
@@ -323,6 +333,7 @@
       font-family: Arial, Helvetica, sans-serif;
       font-size: 0.95rem;
       box-shadow: var(--shadow);
+      transition: 0.2s ease;
     }
 
     .link-chip:hover {
@@ -379,18 +390,17 @@
     }
 
     @media (max-width: 920px) {
-      .hero-grid,
       .grid-3,
-      .grid-2 {
+      .grid-2,
+      .hero-stats {
         grid-template-columns: 1fr;
       }
 
       .hero {
-        padding-top: 56px;
+        padding-top: 40px;
       }
 
-      .hero-copy,
-      .hero-card,
+      .hero-panel,
       .card,
       .cta-panel {
         padding: 24px;
@@ -401,6 +411,42 @@
         padding: 14px 0;
         align-items: flex-start;
         flex-direction: column;
+      }
+
+      h1 {
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .brand {
+        font-size: 0.94rem;
+        letter-spacing: 0.16em;
+      }
+
+      .nav {
+        gap: 14px;
+      }
+
+      .nav a {
+        font-size: 0.88rem;
+      }
+
+      .hero-panel {
+        padding: 22px 18px;
+      }
+
+      .cta-row {
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
@@ -420,57 +466,59 @@
 
   <main id="top">
     <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <p class="eyebrow">Autonomous printable wall art studio</p>
-          <h1>Curated printable wall art, built through a fully autonomous studio system.</h1>
-          <p class="lead">
-            Kindred Archive is a digital studio creating calm, textured printable wall art for modern interiors.
-          </p>
-          <p class="sub">
-            Behind the storefront is an autonomous production and distribution system handling curation,
-            packaging, listing workflows and visual distribution. The result is a studio built for clarity,
-            consistency and long-term brand trust.
-          </p>
+      <div class="container">
+        <div class="hero-wrap">
+          <div class="hero-panel">
+            <div class="hero-copy">
+              <p class="eyebrow">Autonomous printable wall art studio</p>
+              <h1>Calm, curated printable wall art for modern interiors.</h1>
 
-          <div class="cta-row">
-            <a
-              class="btn primary"
-              href="https://www.etsy.com/shop/kindredarchive"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Visit Etsy Shop
-            </a>
-            <a
-              class="btn secondary"
-              href="https://se.pinterest.com/KindredArchive/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View Pinterest
-            </a>
+              <p class="lead">
+                Kindred Archive is a digital studio creating textured printable wall art with a calm, refined and easy-to-trust presentation.
+              </p>
+
+              <p class="sub">
+                Behind the storefront is an autonomous studio system handling curation, packaging, listing workflows and visual distribution with consistency and structure.
+              </p>
+
+              <div class="cta-row">
+                <a
+                  class="btn primary"
+                  href="https://www.etsy.com/shop/kindredarchive"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Visit Etsy Shop
+                </a>
+                <a
+                  class="btn secondary"
+                  href="https://se.pinterest.com/KindredArchive/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Pinterest
+                </a>
+              </div>
+            </div>
+
+            <div class="hero-stats">
+              <div class="stat-card">
+                <span class="stat-label">Focus</span>
+                <div class="stat-value">Textured abstract printable wall art with a calm, premium feel.</div>
+              </div>
+
+              <div class="stat-card">
+                <span class="stat-label">System</span>
+                <div class="stat-value">Autonomous production, packaging and distribution support.</div>
+              </div>
+
+              <div class="stat-card">
+                <span class="stat-label">Channels</span>
+                <div class="stat-value">Etsy, Pinterest and public buyer documentation.</div>
+              </div>
+            </div>
           </div>
         </div>
-
-        <aside class="hero-card">
-          <div class="stat">
-            <span class="stat-label">Studio model</span>
-            <div class="stat-value">Autonomous digital art production and distribution</div>
-          </div>
-          <div class="stat">
-            <span class="stat-label">Focus</span>
-            <div class="stat-value">Textured abstract printable wall art with calm, premium presentation</div>
-          </div>
-          <div class="stat">
-            <span class="stat-label">Output</span>
-            <div class="stat-value">Curated Etsy-ready products with structured packaging and visual consistency</div>
-          </div>
-          <div class="stat">
-            <span class="stat-label">Channels</span>
-            <div class="stat-value">Etsy · Pinterest · External documentation</div>
-          </div>
-        </aside>
       </div>
     </section>
 
